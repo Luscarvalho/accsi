@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+
+<a href="{% url 'home' %}">Home</a>
+<a href="{% url 'cadastrar_atividade_pesquisa' %}">Cadastrar</a>
+<section class="container">
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Modalidade</th>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>CH Mín</th>
+            <th>CH Max</th>
+            <th>AP Max</th>
+            <th>Opções</th>
+        </tr>
+        {% for atividade in atividades %}
+        <tr>
+            <td>{{ atividade.codigo }}</td>
+            <td>{{ atividade.modalidade }}</td>
+            <td>{{ atividade.nome }}</td>
+            <td>{{ atividade.descricao }}</td>
+            <td>{{ atividade.ch_min }}</td>
+            <td>{{ atividade.ch_max }}</td>
+            <td>{{ atividade.ap_max }}</td>
+            <td>
+                <a
+                    href="{% url 'editar_atividade_pesquisa' atividade.id_atividade %}"
+                    >Editar</a
+                >
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</section>
+
+{% endblock %}

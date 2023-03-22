@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+
+<h1>Boa noite</h1>
+<section class="container">
+    <form method="post">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <input type="submit" value="Submit">
+
+    </form>
+</section>
+
+{% endblock %}

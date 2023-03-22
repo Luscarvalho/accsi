@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+
+    <a href="{% url 'listar_modalidade' %}">Modalidade</a>
+<a href="{% url 'home' %}">Home</a>
+<a href="{% url 'cadastrar_aluno' %}">Cadastrar Aluno</a>
+<section class="container">
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Matrícula</th>
+            <th>Email</th>
+            <th>Telefone</th>
+            <th>Opções</th>
+        </tr>
+        {% for aluno in alunos %}
+        <tr>
+            <td>{{ aluno.id_aluno }}</td>
+            <td>{{ aluno.nome }}</td>
+            <td>{{ aluno.matricula }}</td>
+            <td>{{ aluno.email }}</td>
+            <td>{{ aluno.telefone }}</td>
+            <td>
+                <a href="{% url 'editar_aluno' aluno.id_aluno %}"
+                    >Editar</a
+                >
+                <a href="{% url 'listar_aproveitamento' aluno.id_aluno %}"
+                    >Atividades</a
+                >
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</section>
+
+{% endblock %}

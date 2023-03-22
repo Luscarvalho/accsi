@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+
+<section>
+    <div>
+        <p>Ensino</p>
+        <img src="" alt="Ensino" />
+        <a href="{% url 'listar_atividade_ensino' %}">Gerenciar</a>
+    </div>
+    <div>
+        <p>Pesquisa</p>
+        <img src="" alt="Pesquisa" />
+        <a href="{% url 'listar_atividade_pesquisa' %}">Gerenciar</a>
+    </div>
+    <div>
+        <p>Extensão</p>
+        <img src="" alt="Extensão" />
+        <a href="{% url 'listar_atividade_extensao' %}">Gerenciar</a>
+    </div>
+</section>
+
+{% endblock %}

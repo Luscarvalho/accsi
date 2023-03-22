@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+
+<a href="{% url 'home' %}">Home</a>
+<section class="container">
+    <a href="{% url 'cadastrar_aproveitamento' id_aluno %}">Cadastrar</a>
+    <table>
+        <tr>
+            <th>Cod</th>
+            <th>Aluno</th>
+            <th>Descrição</th>
+            <th>Semestre</th>
+            <th>Ano</th>
+            <th>Carga Horária</th>
+            <th>Opções</th>
+        </tr>
+        {% for aproveitamento in aproveitamentos %}
+        <tr>
+            <td>{{ aproveitamento.categoria }}</td>
+            <td>{{ aproveitamento.aluno }}</td>
+            <td>{{ aproveitamento.descricao }}</td>
+            <td>{{ aproveitamento.semestre }}</td>
+            <td>{{ aproveitamento.ano }}</td>
+            <td>{{ aproveitamento.ch }}</td>
+            <td>
+                <a href="{% url 'editar_aproveitamento' aproveitamento.aluno.id_aluno %}">Editar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</section>
+
+{% endblock %}
