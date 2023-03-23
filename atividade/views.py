@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
 from django.urls import reverse_lazy
 from .models import Atividade, Modalidade
@@ -129,4 +129,40 @@ class EditarExtensao(UpdateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = "Editar"
+        return context
+
+
+@method_decorator(login_required, name='dispatch')
+class DeletarEnsino(DeleteView):
+    model = Atividade
+    template_name = 'ensino/excluir_ensino.html'
+    success_url = reverse_lazy('listar_atividade_ensino')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = "Excluir"
+        return context
+
+
+@method_decorator(login_required, name='dispatch')
+class DeletarPesquisa(DeleteView):
+    model = Atividade
+    template_name = 'pesquisa/excluir_pesquisa.html'
+    success_url = reverse_lazy('listar_atividade_pesquisa')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = "Excluir"
+        return context
+
+
+@method_decorator(login_required, name='dispatch')
+class DeletarExtensao(DeleteView):
+    model = Atividade
+    template_name = 'extensao/excluir_extensao.html'
+    success_url = reverse_lazy('listar_atividade_extensao')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = "Excluir"
         return context

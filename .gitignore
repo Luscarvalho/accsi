@@ -4,9 +4,6 @@
 # Virtualenv
 venv
 
-# Database
-db.sqlite3
-
 # Python
-.pyc
+*.pyc 
 __pycache__/

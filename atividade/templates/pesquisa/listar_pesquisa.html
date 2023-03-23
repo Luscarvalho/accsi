@@ -53,6 +53,8 @@
                     <td class="px-6 py-4">
                         <a href="{% url 'editar_atividade_pesquisa' atividade.id_atividade %}"
                            class="text-textbase px-4 font-bold py-3 bg-green-500 rounded-md shadow-lg transform active:scale-90 transition-transform">Editar</a>
+                        <a href="{% url 'apagar_atividade_pesquisa' atividade.id_atividade %}"
+                           class="text-textbase px-4 font-bold py-3 bg-red-500 rounded-md shadow-lg transform active:scale-90 transition-transform">Deletar</a>
                     </td>
                 </tr>
             {% endfor %}
