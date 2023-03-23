@@ -7,9 +7,9 @@ class Atividade(models.Model):
     codigo = models.CharField(unique=True, max_length=5)
     modalidade = models.ForeignKey(Modalidade, on_delete=models.CASCADE)
     descricao = models.CharField(max_length=250)
-    ch_min = models.IntegerField(max_length=3)
-    ch_max = models.IntegerField(max_length=3)
-    ap_max = models.IntegerField(max_length=3)
+    ch_min = models.IntegerField()
+    ch_max = models.IntegerField()
+    ap_max = models.IntegerField()
 
     def __str__(self):
         return self.codigo
