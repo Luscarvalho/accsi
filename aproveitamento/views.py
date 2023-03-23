@@ -60,6 +60,13 @@ class EditarAproveitamento(UpdateView):
     model = Aproveitamento
     fields = ['descricao', 'semestre', 'ano', 'ch']
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.id_aluno = None
+
+    def form_valid(self, form):
+        self.id_aluno = form.instance.aluno.id_aluno
+        return super().form_valid(form)
+
     def get_success_url(self):
-        id_aluno = self.kwargs['pk']
-        return reverse_lazy('listar_aproveitamento', kwargs={'pk': id_aluno})
+        return reverse_lazy('listar_aproveitamento', kwargs={'pk': self.id_aluno})

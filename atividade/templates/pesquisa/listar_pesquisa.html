@@ -6,7 +6,7 @@
             <thead class="uppercase bg-slate-400">
             <tr>
                 <th class="px-6 py-4">
-                    <a href="{% url 'cadastrar_atividade_ensino' %}"
+                    <a href="{% url 'cadastrar_atividade_pesquisa' %}"
                        class="text-textbase font-bold px-4 py-3 bg-blue-500 rounded-md shadow-lg transform active:scale-90 transition-transform">
                         Cadastrar Atividade</a>
                 </th>
@@ -14,9 +14,6 @@
             <tr>
                 <th scope="col" class="px-6 py-3">
                     Cod
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Nome
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Descrição
@@ -42,9 +39,6 @@
                         {{ atividade.codigo }}
                     </th>
                     <td class="px-6 py-4">
-                        {{ atividade.nome }}
-                    </td>
-                    <td class="px-6 py-4">
                         {{ atividade.descricao }}
                     </td>
                     <td class="px-6 py-4">
@@ -57,7 +51,7 @@
                         {{ atividade.ap_max }}
                     </td>
                     <td class="px-6 py-4">
-                        <a href="{% url 'editar_atividade_ensino' atividade.id_atividade %}"
+                        <a href="{% url 'editar_atividade_pesquisa' atividade.id_atividade %}"
                            class="text-textbase px-4 font-bold py-3 bg-green-500 rounded-md shadow-lg transform active:scale-90 transition-transform">Editar</a>
                     </td>
                 </tr>

@@ -1,12 +1,12 @@
 {% extends 'base.html' %} {% load static %} {% block titulo %}
     <link rel="stylesheet" href="{% static 'css/form-cad.css' %}"/>
-    <title>Cadastrar Ensino</title>
+    <title>{{ title }} Ensino</title>
 {% endblock %} {% block conteudo %}
 
     <form method="post">
-        <h1>Cadastrar Ensino</h1>
+        <h1>{{ title }} Ensino</h1>
         {% csrf_token %} {{ form.as_p }}
-        <input class="btn bg-blue-500" type="submit" value="ENTRAR"/>
+        <input class="btn bg-blue-500" type="submit" value="CADASTRAR"/>
     </form>
 
 {% endblock %}

@@ -46,57 +46,87 @@ class ListarExtensao(ListView):
 class CadastrarEnsino(CreateView):
     template_name = 'ensino/cadastrar_ensino.html'
     model = Atividade
-    fields = ['codigo', 'nome', 'descricao', 'ch_min', 'ch_max', 'ap_max']
+    fields = ['codigo', 'descricao', 'ch_min', 'ch_max', 'ap_max']
     success_url = reverse_lazy('listar_atividade_ensino')
 
     def form_valid(self, form):
         form.instance.modalidade = Modalidade.objects.get(id_modalidade=1)
         return super().form_valid(form)
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = "Cadastrar"
+        return context
+
 
 @method_decorator(login_required, name='dispatch')
 class CadastrarPesquisa(CreateView):
     template_name = 'pesquisa/cadastrar_pesquisa.html'
     model = Atividade
-    fields = ['codigo', 'nome', 'descricao', 'ch_min', 'ch_max', 'ap_max']
+    fields = ['codigo', 'descricao', 'ch_min', 'ch_max', 'ap_max']
     success_url = reverse_lazy('listar_atividade_pesquisa')
 
     def form_valid(self, form):
         form.instance.modalidade = Modalidade.objects.get(id_modalidade=2)
         return super().form_valid(form)
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = "Cadastrar"
+        return context
+
 
 @method_decorator(login_required, name='dispatch')
 class CadastrarExtensao(CreateView):
     template_name = 'extensao/cadastrar_extensao.html'
     model = Atividade
-    fields = ['codigo', 'nome', 'descricao', 'ch_min', 'ch_max', 'ap_max']
+    fields = ['codigo', 'descricao', 'ch_min', 'ch_max', 'ap_max']
     success_url = reverse_lazy('listar_atividade_extensao')
 
     def form_valid(self, form):
         form.instance.modalidade = Modalidade.objects.get(id_modalidade=3)
         return super().form_valid(form)
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = "Cadastrar"
+        return context
+
 
 @method_decorator(login_required, name='dispatch')
 class EditarEnsino(UpdateView):
     template_name = 'ensino/cadastrar_ensino.html'
     model = Atividade
-    fields = ['codigo', 'nome', 'descricao', 'ch_min', 'ch_max', 'ap_max']
+    fields = ['codigo', 'descricao', 'ch_min', 'ch_max', 'ap_max']
     success_url = reverse_lazy('listar_atividade_ensino')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = "Editar"
+        return context
 
 
 @method_decorator(login_required, name='dispatch')
 class EditarPesquisa(UpdateView):
     template_name = 'pesquisa/cadastrar_pesquisa.html'
     model = Atividade
-    fields = ['codigo', 'nome', 'descricao', 'ch_min', 'ch_max', 'ap_max']
+    fields = ['codigo', 'descricao', 'ch_min', 'ch_max', 'ap_max']
     success_url = reverse_lazy('listar_atividade_pesquisa')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = "Editar"
+        return context
 
 
 @method_decorator(login_required, name='dispatch')
 class EditarExtensao(UpdateView):
     template_name = 'extensao/cadastrar_extensao.html'
     model = Atividade
-    fields = ['codigo', 'nome', 'descricao', 'ch_min', 'ch_max', 'ap_max']
+    fields = ['codigo', 'descricao', 'ch_min', 'ch_max', 'ap_max']
     success_url = reverse_lazy('listar_atividade_extensao')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = "Editar"
+        return context
