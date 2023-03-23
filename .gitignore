@@ -5,5 +5,4 @@
 venv
 
 # Python
-*.pyc 
-__pycache__/
+*.pyc
