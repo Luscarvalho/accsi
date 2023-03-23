@@ -1,66 +1,38 @@
-{% extends 'base.html' %}
-{% block conteudo %}
+{% extends 'base.html' %} {% block conteudo %}
 
-    <div class="relative overflow-x-auto sm:rounded-lg text-black">
-        <table class="w-full text-base text-center">
-            <thead class="uppercase bg-slate-400">
-            <tr>
-                <th class="px-6 py-4">
-                    <a href="{% url 'cadastrar_aluno' %}"
-                       class="text-textbase font-bold px-4 py-3 bg-blue-500 rounded-md shadow-lg transform active:scale-90 transition-transform">
-                        Cadastrar Aluno</a>
-                </th>
-            </tr>
-            <tr>
-                <th scope="col" class="px-6 py-3">
-                    Id
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Nome
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Matrícula
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Email
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Telefone
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Opções
-                </th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for aluno in alunos %}
-                <tr class="border-b border-gray-700">
-                    <th scope="row" class="px-6 py-4 font-bold whitespace-nowrap">
-                        {{ aluno.id_aluno }}
-                    </th>
-                    <td class="px-6 py-4">
-                        {{ aluno.nome }}
-                    </td>
-                    <td class="px-6 py-4">
-                        {{ aluno.matricula }}
-                    </td>
-                    <td class="px-6 py-4">
-                        {{ aluno.email }}
-                    </td>
-                    <td class="px-6 py-4">
-                        {{ aluno.telefone }}
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="{% url 'editar_aluno' aluno.id_aluno %}"
-                           class="text-textbase px-4 font-bold py-3 bg-green-500 rounded-md shadow-lg transform active:scale-90 transition-transform">Editar</a>
-                        <a href="{% url 'listar_aproveitamento' aluno.id_aluno %}"
-                           class="text-textbase font-bold px-4 py-3 bg-blue-500 rounded-md shadow-lg transform active:scale-90 transition-transform">Atividades</a>
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </div>
+<table>
+    <thead>
+        <tr>
+            <th>
+                <a href="{% url 'cadastrar_aluno' %}"> Cadastrar Aluno</a>
+            </th>
+        </tr>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Matrícula</th>
+            <th scope="col">Email</th>
+            <th scope="col">Telefone</th>
+            <th scope="col">Opções</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for aluno in alunos %}
+        <tr>
+            <th scope="row">{{ aluno.id_aluno }}</th>
+            <td>{{ aluno.nome }}</td>
+            <td>{{ aluno.matricula }}</td>
+            <td>{{ aluno.email }}</td>
+            <td>{{ aluno.telefone }}</td>
+            <td>
+                <a href="{% url 'editar_aluno' aluno.id_aluno %}">Editar</a>
+                <a href="{% url 'listar_aproveitamento' aluno.id_aluno %}"
+                    >Atividades</a
+                >
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
 {% endblock %}
-

@@ -8,7 +8,6 @@
 }
 
 .conteudo {
-    background-color: aquamarine;
     height: calc(100vh - 64px);
     display: flex;
     justify-content: space-evenly;
@@ -16,16 +15,32 @@
 }
 
 .card {
-    background-color: blue;
+    border: dotted black 2px;
     padding: 20px;
     border-radius: 15px;
     text-align: center;
     width: 350px;
-    height: 350px;
+    height: auto;
+}
+
+.card img {
+    margin: 10px 0 20px 0;
+}
+
+.card p {
+    font-size: 1.5rem;
+    font-weight: bolder;
+    text-transform: uppercase;
 }
 
 .card a {
-    background-color: rgb(183, 183, 255);
-    padding: 20px;
-    border-radius: 10px;
+    padding: 10px;
+    background-color: #121c4d;
+    border-radius: 30px;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.card a:hover {
+    box-shadow: 0 0 10px;
 }
