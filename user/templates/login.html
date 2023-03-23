@@ -1,12 +1,15 @@
-{% extends 'base.html' %}
-{% block conteudo %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Login</title>
+</head>
 
-<section class="container">
-    <form method="post">
-        {% csrf_token %} {{ form.as_p }}
+<body>
+<form method="post">
+    {% csrf_token %} {{ form.as_p }}
+    <input type="submit" value="Submit"/>
+</form>
+</body>
 
-        <input type="submit" value="Entrar" />
-    </form>
-</section>
-
-{% endblock %}
