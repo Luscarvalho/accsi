@@ -1,15 +1,25 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8"/>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>Login</title>
-</head>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+        <title>Login</title>
+    </head>
 
-<body>
-<form method="post">
-    {% csrf_token %} {{ form.as_p }}
-    <input type="submit" value="Submit"/>
-</form>
-</body>
-
+    <body>
+        <section class="container">
+            <div class="left-login">
+                <img src="{% static 'img/login.svg' %}" alt="" />
+            </div>
+            <div class="right-login">
+                <form method="post">
+                    <h1>Login</h1>
+                    {% csrf_token %} {{ form.as_p }}
+                    <input class="btn" type="submit" value="ENTRAR" />
+                </form>
+            </div>
+        </section>
+    </body>
+</html>

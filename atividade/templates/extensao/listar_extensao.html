@@ -1,38 +1,71 @@
 {% extends 'base.html' %}
 {% block conteudo %}
 
-<a href="{% url 'home' %}">Home</a>
-<a href="{% url 'cadastrar_atividade_extensao' %}">Cadastrar</a>
-<section class="container">
-    <table>
-        <tr>
-            <th>Id</th>
-            <th>Modalidade</th>
-            <th>Nome</th>
-            <th>Descrição</th>
-            <th>CH Mín</th>
-            <th>CH Max</th>
-            <th>AP Max</th>
-            <th>Opções</th>
-        </tr>
-        {% for atividade in atividades %}
-        <tr>
-            <td>{{ atividade.codigo }}</td>
-            <td>{{ atividade.modalidade }}</td>
-            <td>{{ atividade.nome }}</td>
-            <td>{{ atividade.descricao }}</td>
-            <td>{{ atividade.ch_min }}</td>
-            <td>{{ atividade.ch_max }}</td>
-            <td>{{ atividade.ap_max }}</td>
-            <td>
-                <a
-                    href="{% url 'editar_atividade_extensao' atividade.id_atividade %}"
-                    >Editar</a
-                >
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
-</section>
+    <div class="relative overflow-x-auto sm:rounded-lg text-black">
+        <table class="w-full text-base text-center">
+            <thead class="uppercase bg-slate-400">
+            <tr>
+                <th class="px-6 py-4">
+                    <a href="{% url 'cadastrar_atividade_ensino' %}"
+                       class="text-textbase font-bold px-4 py-3 bg-blue-500 rounded-md shadow-lg transform active:scale-90 transition-transform">
+                        Cadastrar Atividade</a>
+                </th>
+            </tr>
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    Cod
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Nome
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Descrição
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    CH Mín
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    CH Max
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    AP Max
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Opções
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for atividade in atividades %}
+                <tr class="border-b border-gray-700">
+                    <th scope="row" class="px-6 py-4 font-bold whitespace-nowrap">
+                        {{ atividade.codigo }}
+                    </th>
+                    <td class="px-6 py-4">
+                        {{ atividade.nome }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ atividade.descricao }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ atividade.ch_min }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ atividade.ch_max }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ atividade.ap_max }}
+                    </td>
+                    <td class="px-6 py-4">
+                        <a href="{% url 'editar_atividade_ensino' atividade.id_atividade %}"
+                           class="text-textbase px-4 font-bold py-3 bg-green-500 rounded-md shadow-lg transform active:scale-90 transition-transform">Editar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
 {% endblock %}
+
+

@@ -1,16 +1,12 @@
-{% extends 'base.html' %}
-{% block conteudo %}
+{% extends 'base.html' %} {% load static %} {% block titulo %}
+    <link rel="stylesheet" href="{% static 'css/form-cad.css' %}"/>
+    <title>Cadastrar pesquisa</title>
+{% endblock %} {% block conteudo %}
 
-<h1>Boa noite</h1>
-<section class="container">
     <form method="post">
-        {% csrf_token %}
-
-        {{ form.as_p }}
-
-        <input type="submit" value="Submit">
-
+        <h1>Cadastrar pesquisa</h1>
+        {% csrf_token %} {{ form.as_p }}
+        <input class="btn bg-blue-500" type="submit" value="ENTRAR"/>
     </form>
-</section>
 
 {% endblock %}

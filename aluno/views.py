@@ -18,7 +18,7 @@ class CadastrarAluno(CreateView):
     template_name = 'cadastrar_aluno.html'
     model = Aluno
     fields = ['nome', 'matricula', 'email', 'telefone']
-    success_url = reverse_lazy('listar_aluno')
+    success_url = reverse_lazy('home')
 
 
 @method_decorator(login_required, name='dispatch')
@@ -26,4 +26,4 @@ class EditarAluno(UpdateView):
     template_name = 'cadastrar_aluno.html'
     model = Aluno
     fields = ['nome', 'matricula', 'email', 'telefone']
-    success_url = reverse_lazy('listar_aluno')
+    success_url = reverse_lazy('home')
