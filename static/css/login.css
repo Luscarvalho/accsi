@@ -23,7 +23,18 @@
 }
 
 .left-login img {
-    width: 75%;
+    width: 60%;
+}
+
+.img-ufam {
+    position: fixed;
+    display: flex;
+}
+
+.img-ufam img {
+    width: 70px;
+    height: 90px;
+    margin: 20px;
 }
 
 .right-login {

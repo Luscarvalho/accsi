@@ -1,64 +1,47 @@
-{% extends 'base.html' %}
-{% block conteudo %}
+{% extends 'base.html' %} {% load static %} {% block style %}
+<link rel="stylesheet" href="{% static 'css/tabelas.css' %}" />
+{% endblock %} {% block conteudo %}
 
-    <div class="relative overflow-x-auto sm:rounded-lg text-black">
-        <table class="w-full text-base text-center">
-            <thead class="uppercase bg-slate-400">
-            <tr>
-                <th class="px-6 py-4">
-                    <a href="{% url 'cadastrar_aproveitamento' id_aluno %}"
-                       class="text-textbase font-bold px-4 py-3 bg-blue-500 rounded-md shadow-lg transform active:scale-90 transition-transform">
-                        Cadastrar Aproveitamento</a>
-                </th>
-            </tr>
-            <tr>
-                <th scope="col" class="px-6 py-3">
-                    Cod
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Descrição
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Semestre
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Ano
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Carga Horária
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Opções
-                </th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for aproveitamento in aproveitamentos %}
-                <tr class="border-b border-gray-700">
-                    <th scope="row" class="px-6 py-4 font-bold whitespace-nowrap">
-                        {{ aproveitamento.categoria }}
-                    </th>
-                    <td class="px-6 py-4">
-                        {{ aproveitamento.descricao }}
-                    </td>
-                    <td class="px-6 py-4">
-                        {{ aproveitamento.semestre }}
-                    </td>
-                    <td class="px-6 py-4">
-                        {{ aproveitamento.ano }}
-                    </td>
-                    <td class="px-6 py-4">
-                        {{ aproveitamento.ch }}
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="{% url 'editar_aproveitamento' aproveitamento.id_aproveitamento %}"
-                           class="text-textbase px-4 font-bold py-3 bg-green-500 rounded-md shadow-lg transform active:scale-90 transition-transform">Editar</a>
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </div>
+<table>
+    <thead>
+        <tr>
+            <th colspan="5" style="text-align: start">Aproveitamento</th>
+            <th colspan="1" style="justify-content: end">
+                <a
+                    class="cad"
+                    href="{% url 'cadastrar_aproveitamento' id_aluno %}"
+                >
+                    Cadastrar</a
+                >
+            </th>
+        </tr>
+        <tr>
+            <th scope="col">Cod</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">Semestre</th>
+            <th scope="col">Ano</th>
+            <th scope="col">Carga Horária</th>
+            <th scope="col">Opções</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for aproveitamento in aproveitamentos %}
+        <tr>
+            <th scope="row">{{ aproveitamento.categoria }}</th>
+            <td>{{ aproveitamento.descricao }}</td>
+            <td>{{ aproveitamento.semestre }}</td>
+            <td>{{ aproveitamento.ano }}</td>
+            <td>{{ aproveitamento.ch }}</td>
+            <td>
+                <a
+                    class="edit"
+                    href="{% url 'editar_aproveitamento' aproveitamento.id_aproveitamento %}"
+                    >Editar</a
+                >
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
 {% endblock %}
-

@@ -1,10 +1,15 @@
-{% extends 'base.html' %} {% block conteudo %}
+{% extends 'base.html' %} {% load static %} {% block style %}
+<link rel="stylesheet" href="{% static 'css/tabelas.css' %}" />
+{% endblock %} {% block conteudo %}
 
 <table>
     <thead>
         <tr>
-            <th>
-                <a href="{% url 'cadastrar_aluno' %}"> Cadastrar Aluno</a>
+            <th colspan="5" style="text-align: start">Alunos</th>
+            <th colspan="1" style="justify-content: end">
+                <a class="cad" href="{% url 'cadastrar_aluno' %}">
+                    Cadastrar Aluno</a
+                >
             </th>
         </tr>
         <tr>
@@ -25,8 +30,12 @@
             <td>{{ aluno.email }}</td>
             <td>{{ aluno.telefone }}</td>
             <td>
-                <a href="{% url 'editar_aluno' aluno.id_aluno %}">Editar</a>
-                <a href="{% url 'listar_aproveitamento' aluno.id_aluno %}"
+                <a class="edit" href="{% url 'editar_aluno' aluno.id_aluno %}"
+                    >Editar</a
+                >
+                <a
+                    class="delete"
+                    href="{% url 'listar_aproveitamento' aluno.id_aluno %}"
                     >Atividades</a
                 >
             </td>

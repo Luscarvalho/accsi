@@ -1,67 +1,51 @@
-{% extends 'base.html' %}
-{% block conteudo %}
+{% extends 'base.html' %} {% load static %} {% block style %}
+<link rel="stylesheet" href="{% static 'css/tabelas.css' %}" />
+{% endblock %} {% block conteudo %}
 
-    <div class="relative overflow-x-auto sm:rounded-lg text-black">
-        <table class="w-full text-base text-center">
-            <thead class="uppercase bg-slate-400">
+<div>
+    <table>
+        <thead>
             <tr>
-                <th class="px-6 py-4">
-                    <a href="{% url 'cadastrar_atividade_pesquisa' %}"
-                       class="text-textbase font-bold px-4 py-3 bg-blue-500 rounded-md shadow-lg transform active:scale-90 transition-transform">
-                        Cadastrar Atividade</a>
+                <th colspan="5" style="text-align: start">Pesquisa</th>
+                <th colspan="1" style="justify-content: end"
+                    <a href="{% url 'cadastrar_atividade_pesquisa' %}">
+                        Cadastrar</a
+                    >
                 </th>
             </tr>
             <tr>
-                <th scope="col" class="px-6 py-3">
-                    Cod
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Descrição
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    CH Mín
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    CH Max
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    AP Max
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Opções
-                </th>
+                <th scope="col">Cod</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">CH Mín</th>
+                <th scope="col">CH Max</th>
+                <th scope="col">AP Max</th>
+                <th scope="col" style="width: 20%">Opções</th>
             </tr>
-            </thead>
-            <tbody>
+        </thead>
+        <tbody>
             {% for atividade in atividades %}
-                <tr class="border-b border-gray-700">
-                    <th scope="row" class="px-6 py-4 font-bold whitespace-nowrap">
-                        {{ atividade.codigo }}
-                    </th>
-                    <td class="px-6 py-4">
-                        {{ atividade.descricao }}
-                    </td>
-                    <td class="px-6 py-4">
-                        {{ atividade.ch_min }}
-                    </td>
-                    <td class="px-6 py-4">
-                        {{ atividade.ch_max }}
-                    </td>
-                    <td class="px-6 py-4">
-                        {{ atividade.ap_max }}
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="{% url 'editar_atividade_pesquisa' atividade.id_atividade %}"
-                           class="text-textbase px-4 font-bold py-3 bg-green-500 rounded-md shadow-lg transform active:scale-90 transition-transform">Editar</a>
-                        <a href="{% url 'apagar_atividade_pesquisa' atividade.id_atividade %}"
-                           class="text-textbase px-4 font-bold py-3 bg-red-500 rounded-md shadow-lg transform active:scale-90 transition-transform">Deletar</a>
-                    </td>
-                </tr>
+            <tr>
+                <th>{{ atividade.codigo }}</th>
+                <td>{{ atividade.descricao }}</td>
+                <td>{{ atividade.ch_min }}</td>
+                <td>{{ atividade.ch_max }}</td>
+                <td>{{ atividade.ap_max }}</td>
+                <td>
+                    <a
+                        class="edit"
+                        href="{% url 'editar_atividade_pesquisa' atividade.id_atividade %}"
+                        >Editar</a
+                    >
+                    <a
+                        class="delete"
+                        href="{% url 'apagar_atividade_pesquisa' atividade.id_atividade %}"
+                        >Deletar</a
+                    >
+                </td>
+            </tr>
             {% endfor %}
-            </tbody>
-        </table>
-    </div>
+        </tbody>
+    </table>
+</div>
 
 {% endblock %}
-
-

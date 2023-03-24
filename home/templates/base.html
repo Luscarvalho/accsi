@@ -5,9 +5,9 @@
     <head>
         <meta charset="UTF-8" />
         <script src="https://cdn.tailwindcss.com"></script>
+        {% block style %}
         <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-
-        {% block titulo %}
+        {% endblock %} {% block titulo %}
         <title>Home</title>
         {% endblock %}
     </head>

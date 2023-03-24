@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+table {
+    width: 100%;
+    text-align: center;
+    font-size: 1.2rem;
+    border-collapse: collapse;
+    border-radius: 20px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+}
+
+table a {
+    border-radius: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    font-weight: bold;
+}
+
+td,
+th {
+    height: 60px;
+    border-bottom: 1px solid black;
+}
+
+.cad {
+    background-color: #121c4d;
+    color: white;
+}
+
+.edit {
+    background-color: #ffbb33;
+    color: white;
+}
+
+.delete {
+    background-color: #ff3547;
+    color: white;
+}
