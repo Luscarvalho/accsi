@@ -20,6 +20,11 @@ class CadastrarAluno(CreateView):
     fields = ['nome', 'matricula', 'email', 'telefone']
     success_url = reverse_lazy('home')
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = "Cadastrar"
+        return context
+
 
 @method_decorator(login_required, name='dispatch')
 class EditarAluno(UpdateView):
@@ -27,3 +32,8 @@ class EditarAluno(UpdateView):
     model = Aluno
     fields = ['nome', 'matricula', 'email', 'telefone']
     success_url = reverse_lazy('home')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = "Editar"
+        return context

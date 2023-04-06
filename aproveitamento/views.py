@@ -30,7 +30,9 @@ class ListarAproveitamento(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        aluno = Aluno.objects.get(id_aluno=self.id_aluno)
         context['id_aluno'] = self.id_aluno
+        context['aluno_nome'] = aluno.nome
         return context
 
 
@@ -38,7 +40,7 @@ class ListarAproveitamento(ListView):
 class CadastrarAproveitamento(CreateView):
     template_name = 'cadastrar_aproveitamento.html'
     model = Aproveitamento
-    fields = ['descricao', 'categoria', 'semestre', 'ano', 'ch']
+    fields = ['categoria', 'descricao', 'semestre', 'ano', 'ch']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -55,6 +57,11 @@ class CadastrarAproveitamento(CreateView):
     def form_valid(self, form):
         form.instance.aluno = Aluno.objects.get(id_aluno=self.id_aluno)
         return super().form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = "Cadastrar"
+        return context
 
 
 @method_decorator(login_required, name='dispatch')
@@ -74,7 +81,13 @@ class EditarAproveitamento(UpdateView):
     def get_success_url(self):
         return reverse_lazy('listar_aproveitamento', kwargs={'pk': self.id_aluno})
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = "Editar"
+        return context
 
+
+@method_decorator(login_required, name='dispatch')
 class ExportarDados(View):
     def get(self, request, *args, **kwargs):
 

@@ -5,12 +5,19 @@
     <table>
         <thead>
         <tr>
-            <th colspan="5" style="text-align: start">Aproveitamento</th>
+            <th colspan="4" style="text-align: start; font-weight: bolder; color: #121c4d">Nome: {{ aluno_nome }}</th>
+            <th colspan="1" style="justify-content: end">
+                <a
+                        class="export"
+                        href="{% url 'exportar' %}"
+                >
+                    Exportar</a
+                >
+            </th>
             <th colspan="1" style="justify-content: end">
                 <a
                         class="cad"
-                        {#                    href="{% url 'cadastrar_aproveitamento' id_aluno %}"#}
-                        href="{% url 'exportar' %}"
+                        href="{% url 'cadastrar_aproveitamento' id_aluno %}"
                 >
                     Cadastrar</a
                 >
