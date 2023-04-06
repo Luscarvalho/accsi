@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'home',
     'aproveitamento',
     'user',
+    'import_export',
 ]
 
 MIDDLEWARE = [

@@ -1,9 +1,12 @@
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.views.generic import View
 from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic.list import ListView
 from django.urls import reverse_lazy
 from .models import Aproveitamento, Aluno
+import pandas as pd
+from django.http import HttpResponse
 
 
 @method_decorator(login_required, name='dispatch')
@@ -70,3 +73,25 @@ class EditarAproveitamento(UpdateView):
 
     def get_success_url(self):
         return reverse_lazy('listar_aproveitamento', kwargs={'pk': self.id_aluno})
+
+
+class ExportarDados(View):
+    def get(self, request, *args, **kwargs):
+
+        data = []
+
+        for aluno in Aluno.objects.all():
+            for aproveitamento in Aproveitamento.objects.filter(aluno=aluno):
+                linha = {'Aluno': aluno.nome, 'Código': aproveitamento.categoria,
+                         'Atividade': aproveitamento.descricao, 'Carga Horária': aproveitamento.ch}
+                data.append(linha)
+
+        # Criar o DataFrame a partir dos dados
+        df = pd.DataFrame(data)
+
+        # Exportar o DataFrame como um arquivo Excel
+        response = HttpResponse(content_type='application/vnd.ms-excel')
+        response['Content-Disposition'] = 'attachment; filename="dados.xlsx"'
+        df.to_excel(response)
+
+        return response
