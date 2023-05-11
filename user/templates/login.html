@@ -1,29 +1,27 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8"/>
-    <link rel="stylesheet" href="{% static 'css/login.css' %}"/>
-    <title>Login</title>
-</head>
-
-<body>
-<section class="container">
-    <div class="img-ufam">
-        <img src="{% static 'img/UFAM.png' %}" alt=""/>
-        <img src="{% static 'img/ICET-UFAM.png' %}" alt=""/>
-    </div>
-    <div class="left-login">
-        <img src="{% static 'img/SACSI.png' %}" alt=""/>
-    </div>
-    <div class="right-login">
-        <form method="post">
-            <h1>Login</h1>
-            {% csrf_token %} {{ form.as_p }}
-            <input class="btn" type="submit" value="ENTRAR"/>
-        </form>
-    </div>
-</section>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+        <title>Login</title>
+    </head>
+    <body>
+        <section class="container">
+            <div class="img-ufam">
+                <img src="{% static 'img/UFAM.png' %}" alt="" />
+                <img src="{% static 'img/ICET-UFAM.png' %}" alt="" />
+            </div>
+            <div class="left-login">
+                <img src="{% static 'img/SACSI.png' %}" alt="" />
+            </div>
+            <div class="right-login">
+                <form method="post">
+                    <h1>Login</h1>
+                    {% csrf_token %} {{ form.as_p }}
+                    <input class="btn" type="submit" value="ENTRAR" />
+                </form>
+            </div>
+        </section>
+    </body>
 </html>

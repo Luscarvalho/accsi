@@ -1,55 +1,46 @@
-{% extends 'base.html' %} {% load static %} {% block style %}
-    <link rel="stylesheet" href="{% static 'css/tabelas.css' %}"/>
-{% endblock %} {% block conteudo %}
-
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/tabelas.css' %}" />
+{% endblock %}
+{% block conteudo %}
     <table>
         <thead>
-        <tr>
-            <th colspan="4" style="text-align: start; font-weight: bolder; color: #121c4d">Nome: {{ aluno_nome }}</th>
-            <th colspan="1" style="justify-content: end">
-                <a
-                        class="export"
-                        href="{% url 'exportar' %}"
-                >
-                    Exportar</a
-                >
-            </th>
-            <th colspan="1" style="justify-content: end">
-                <a
-                        class="cad"
-                        href="{% url 'cadastrar_aproveitamento' id_aluno %}"
-                >
-                    Cadastrar</a
-                >
-            </th>
-        </tr>
-        <tr>
-            <th scope="col">Cod</th>
-            <th scope="col">Descrição</th>
-            <th scope="col">Semestre</th>
-            <th scope="col">Ano</th>
-            <th scope="col">Carga Horária</th>
-            <th scope="col">Opções</th>
-        </tr>
+            <tr>
+                <th colspan="4"
+                    style="text-align: start;
+                           font-weight: bolder;
+                           color: #121c4d">Nome: {{ aluno_nome }}</th>
+                <th colspan="1" style="justify-content: end">
+                    <a class="export" href="{% url 'exportar' %}">Exportar</a>
+                </th>
+                <th colspan="1" style="justify-content: end">
+                    <a class="cad" href="{% url 'cadastrar_aproveitamento' id_aluno %}">Cadastrar</a>
+                </th>
+            </tr>
+            <tr>
+                <th scope="col">Cod</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Semestre</th>
+                <th scope="col">Ano</th>
+                <th scope="col">Carga Horária</th>
+                <th scope="col">Opções</th>
+            </tr>
         </thead>
         <tbody>
-        {% for aproveitamento in aproveitamentos %}
-            <tr>
-                <th scope="row">{{ aproveitamento.categoria }}</th>
-                <td>{{ aproveitamento.descricao }}</td>
-                <td>{{ aproveitamento.semestre }}</td>
-                <td>{{ aproveitamento.ano }}</td>
-                <td>{{ aproveitamento.ch }}</td>
-                <td>
-                    <a
-                            class="edit"
-                            href="{% url 'editar_aproveitamento' aproveitamento.id_aproveitamento %}"
-                    >Editar</a
-                    >
-                </td>
-            </tr>
-        {% endfor %}
+            {% for aproveitamento in aproveitamentos %}
+                <tr>
+                    <th scope="row">{{ aproveitamento.categoria }}</th>
+                    <td>{{ aproveitamento.descricao }}</td>
+                    <td>{{ aproveitamento.semestre }}</td>
+                    <td>{{ aproveitamento.ano }}</td>
+                    <td>{{ aproveitamento.ch }}</td>
+                    <td>
+                        <a class="edit"
+                           href="{% url 'editar_aproveitamento' aproveitamento.id_aproveitamento %}">Editar</a>
+                    </td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
-
 {% endblock %}

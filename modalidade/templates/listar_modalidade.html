@@ -1,22 +1,23 @@
-{% extends 'base.html' %} {% load static %} {% block titulo %}
-<title>Modalidades</title>
-<link rel="stylesheet" href="{% static 'css/modalidade.css' %}" />
-{% endblock %} {% block conteudo %}
-
-<div class="card">
-    <p>Ensino</p>
-    <img src="{% static 'img/Ensino.png' %}" alt="Ensino" />
-    <a href="{% url 'listar_atividade_ensino' %}">Gerenciar</a>
-</div>
-<div class="card">
-    <p>Pesquisa</p>
-    <img src="{% static 'img/Pesquisa.png' %}" alt="Pesquisa" />
-    <a href="{% url 'listar_atividade_pesquisa' %}">Gerenciar</a>
-</div>
-<div class="card">
-    <p>Extensão</p>
-    <img src="{% static 'img/Extensao.png' %}" alt="Extensão" />
-    <a href="{% url 'listar_atividade_extensao' %}">Gerenciar</a>
-</div>
-
+{% extends 'base.html' %}
+{% load static %}
+{% block titulo %}
+    <title>Modalidades</title>
+    <link rel="stylesheet" href="{% static 'css/modalidade.css' %}" />
+{% endblock %}
+{% block conteudo %}
+    <div class="card">
+        <p>Ensino</p>
+        <img src="{% static 'img/Ensino.png' %}" alt="Ensino" />
+        <a href="{% url 'listar_atividade_ensino' %}">Gerenciar</a>
+    </div>
+    <div class="card">
+        <p>Pesquisa</p>
+        <img src="{% static 'img/Pesquisa.png' %}" alt="Pesquisa" />
+        <a href="{% url 'listar_atividade_pesquisa' %}">Gerenciar</a>
+    </div>
+    <div class="card">
+        <p>Extensão</p>
+        <img src="{% static 'img/Extensao.png' %}" alt="Extensão" />
+        <a href="{% url 'listar_atividade_extensao' %}">Gerenciar</a>
+    </div>
 {% endblock %}

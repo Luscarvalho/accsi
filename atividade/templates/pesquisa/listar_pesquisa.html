@@ -1,16 +1,19 @@
-{% extends 'base.html' %} {% load static %} {% block style %}
-<link rel="stylesheet" href="{% static 'css/tabelas.css' %}" />
-{% endblock %} {% block conteudo %}
-
-<div>
-    <table>
-        <thead>
-            <tr>
-                <th colspan="5" style="text-align: start">Pesquisa</th>
-                <th colspan="1" style="justify-content: end"
-                    <a href="{% url 'cadastrar_atividade_pesquisa' %}">
-                        Cadastrar</a
-                    >
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/tabelas.css' %}" />
+{% endblock %}
+{% block conteudo %}
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="5" style="text-align: start">Pesquisa</th>
+                    <th colspan="1"
+                        style="justify-content: end"
+                        a
+                        href="{% url 'cadastrar_atividade_pesquisa' %}">
+                    Cadastrar</a>
                 </th>
             </tr>
             <tr>
@@ -24,28 +27,21 @@
         </thead>
         <tbody>
             {% for atividade in atividades %}
-            <tr>
-                <th>{{ atividade.codigo }}</th>
-                <td>{{ atividade.descricao }}</td>
-                <td>{{ atividade.ch_min }}</td>
-                <td>{{ atividade.ch_max }}</td>
-                <td>{{ atividade.ap_max }}</td>
-                <td>
-                    <a
-                        class="edit"
-                        href="{% url 'editar_atividade_pesquisa' atividade.id_atividade %}"
-                        >Editar</a
-                    >
-                    <a
-                        class="delete"
-                        href="{% url 'apagar_atividade_pesquisa' atividade.id_atividade %}"
-                        >Deletar</a
-                    >
-                </td>
-            </tr>
+                <tr>
+                    <th>{{ atividade.codigo }}</th>
+                    <td>{{ atividade.descricao }}</td>
+                    <td>{{ atividade.ch_min }}</td>
+                    <td>{{ atividade.ch_max }}</td>
+                    <td>{{ atividade.ap_max }}</td>
+                    <td>
+                        <a class="edit"
+                           href="{% url 'editar_atividade_pesquisa' atividade.id_atividade %}">Editar</a>
+                        <a class="delete"
+                           href="{% url 'apagar_atividade_pesquisa' atividade.id_atividade %}">Deletar</a>
+                    </td>
+                </tr>
             {% endfor %}
         </tbody>
     </table>
 </div>
-
 {% endblock %}

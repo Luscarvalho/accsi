@@ -1,16 +1,15 @@
-{% extends 'base.html' %} {% load static %} {% block titulo %}
-    <link rel="stylesheet" href="{% static 'css/form-cad.css' %}"/>
+{% extends 'base.html' %}
+{% load static %}
+{% block titulo %}
+    <link rel="stylesheet" href="{% static 'css/form-cad.css' %}" />
     <title>{{ title }} Ensino</title>
-{% endblock %} {% block conteudo %}
-
+{% endblock %}
+{% block conteudo %}
     <form method="post">
         <h1>{{ title }} Ensino</h1>
         {% csrf_token %}
         <h3>Confirme para excluir definitivamente</h3>
-        <p>
-            Deseja excluir o {{ object }}?
-        </p>
-        <input class="btn bg-red-500" type="submit" value="EXCLUIR"/>
+        <p>Deseja excluir o {{ object }}?</p>
+        <input class="btn bg-red-500" type="submit" value="EXCLUIR" />
     </form>
-
 {% endblock %}

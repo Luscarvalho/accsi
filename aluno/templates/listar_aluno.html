@@ -1,45 +1,41 @@
-{% extends 'base.html' %} {% load static %} {% block style %}
-<link rel="stylesheet" href="{% static 'css/tabelas.css' %}" />
-{% endblock %} {% block conteudo %}
-
-<table>
-    <thead>
-        <tr>
-            <th colspan="5" style="text-align: start">Alunos</th>
-            <th colspan="1" style="justify-content: end">
-                <a class="cad" href="{% url 'cadastrar_aluno' %}"> Cadastrar</a>
-            </th>
-        </tr>
-        <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Nome</th>
-            <th scope="col">Matrícula</th>
-            <th scope="col">Email</th>
-            <th scope="col">Telefone</th>
-            <th scope="col">Opções</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for aluno in alunos %}
-        <tr>
-            <th scope="row">{{ aluno.id_aluno }}</th>
-            <td>{{ aluno.nome }}</td>
-            <td>{{ aluno.matricula }}</td>
-            <td>{{ aluno.email }}</td>
-            <td>{{ aluno.telefone }}</td>
-            <td>
-                <a class="edit" href="{% url 'editar_aluno' aluno.id_aluno %}"
-                    >Editar</a
-                >
-                <a
-                    class="delete"
-                    href="{% url 'listar_aproveitamento' aluno.id_aluno %}"
-                    >Atividades</a
-                >
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/tabelas.css' %}" />
+{% endblock %}
+{% block conteudo %}
+    <table>
+        <thead>
+            <tr>
+                <th colspan="5" style="text-align: start">Alunos</th>
+                <th colspan="1" style="justify-content: end">
+                    <a class="cad" href="{% url 'cadastrar_aluno' %}">Cadastrar</a>
+                </th>
+            </tr>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Matrícula</th>
+                <th scope="col">Email</th>
+                <th scope="col">Telefone</th>
+                <th scope="col">Opções</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for aluno in alunos %}
+                <tr>
+                    <th scope="row">{{ aluno.id_aluno }}</th>
+                    <td>{{ aluno.nome }}</td>
+                    <td>{{ aluno.matricula }}</td>
+                    <td>{{ aluno.email }}</td>
+                    <td>{{ aluno.telefone }}</td>
+                    <td>
+                        <a class="edit" href="{% url 'editar_aluno' aluno.id_aluno %}">Editar</a>
+                        <a class="delete"
+                           href="{% url 'listar_aproveitamento' aluno.id_aluno %}">Atividades</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
